@@ -1,14 +1,18 @@
 {
-  "name": "mofron-comp-menuswitch",
+  "name": "mofron-comp-menuswh",
   "version": "0.0.1",
-  "description": "menu switch glue-component for mofron",
+  "description": "menu switch component for mofron",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "mofron-comp-visiswh" : "" ,
+    "mofron-event-focus" : ""
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/simpart/mofron-comp-menuswitch.git"
+    "url": "git+https://github.com/simpart/mofron-comp-menuswh.git"
   },
   "keywords": [
     "front-end"
@@ -16,7 +20,7 @@
   "author": "simparts",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
-    "url": "https://github.com/simpart/mofron-comp-menuswitch/issues"
+    "url": "https://github.com/simpart/mofron-comp-menuswh/issues"
   },
-  "homepage": "https://github.com/simpart/mofron-comp-menuswitch#readme"
+  "homepage": "https://github.com/simpart/mofron-comp-menuswh#readme"
 }
