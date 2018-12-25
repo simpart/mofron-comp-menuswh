@@ -1,55 +1,83 @@
 /**
- * @file   mofron-comp-menuswitch/index.js
+ * @file   mofron-comp-menuconts/index.js
+ * @brief  menu contents swich
  * @author simpart
  */
-let mf = require('mofron');
-let Switch = require('mofron-comp-visiswh');
-let Focus = require('mofron-event-focus');
-
-/**
- * @class mofron.comp.MenuSwitch
- * @brief menu switch component for mofron
- */
-mf.comp.MenuSwh = class extends Switch {
+const mf = require('mofron');
+mf.comp.MenuSwh = class extends mf.Component {
     
-    constructor (po, p2) {
+    /**
+     * initialize component
+     * 
+     * @param po paramter or option
+     */
+    constructor (po) {
         try {
             super();
             this.name('MenuSwh');
-            this.prmOpt(po, p2);
+            this.prmOpt(po);
         } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
     
-    switch (prm) {
+    /**
+     * menu component setter/getter
+     *
+     * @param p1 (Menu) menu component
+     * @param p1 (undefined) call as getter
+     * @return (Menu) menu component
+     */
+    menu (prm) {
         try {
-            let evt = (flg, swh, mns) => {
-                try {
-                    mns.status(flg);
-                } catch (e) {
-                    console.error(e.stack);
-                    throw e;
-                }
-            };
             if (undefined !== prm) {
-                prm.addEvent(new Focus(evt, this));
+                if (true !== mf.func.isInclude(prm, ['Component', 'Menu'])) {
+                    throw new Error('invalid parameter');
+                }
+                prm.selectEvent(this.switchConts);
             }
-            return super.switch(prm);
+            return this.innerComp('menu', prm);
         } catch (e) {
-            
+            console.error(e.stack);
+            throw e;
         }
     }
     
-    menu (prm) {
+    /**
+     * contents component setter/getter
+     *
+     * @param p1 (Component) add contents
+     * @param p1 (array) add contents array
+     * @param p1 (undefined) call as getter
+     * @return (Component) contents
+     */
+    contents (prm) {
+        try { return this.arrayMember('contents', 'Component', prm); } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
+    /**
+     * switch contents
+     * 
+     * @param p1 (Menu) menu component object
+     * @param p2 (number) selected menu index
+     * @note private method
+     * @note it is called by select event of menu component
+     */
+    switchConts (mnu, idx) {
         try {
-            return this.swhTarget(prm);
+            let conts = this.contents();
+            for (let cidx in conts) {
+                conts[cidx].visible((idx == cidx) ? true : false);
+            }
         } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
 }
-module.exports = mofron.comp.MenuSwh;
+module.exports = mf.comp.MenuSwh;
 /* end of file */

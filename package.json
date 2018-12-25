@@ -1,14 +1,10 @@
 {
   "name": "mofron-comp-menuswh",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "menu switch component for mofron",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "mofron-comp-visiswh" : "" ,
-    "mofron-event-focus" : ""
   },
   "repository": {
     "type": "git",
@@ -18,7 +14,7 @@
     "front-end"
   ],
   "author": "simparts",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/simpart/mofron-comp-menuswh/issues"
   },
